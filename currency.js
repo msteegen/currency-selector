@@ -1,62 +1,83 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const currencyDropdown = document.getElementById("currency");
+    const switcher = document.getElementById("currency-switcher");
+    const buttons = document.querySelectorAll(".currency-btn");
 
-    // Array of products with their base prices in USD
+    // Array of products with base prices and optional discount percentage (0-100)
     const products = [
-        { id: "product1", basePriceUSD: 100 },
-        { id: "product2", basePriceUSD: 150 },
-        { id: "product3", basePriceUSD: 200 },
-        { id: "product4", basePriceUSD: 1 },
-        { id: "product5", basePriceUSD: 45.85 },
-        { id: "product6", basePriceUSD: 12.75 },
-        { id: "product7", basePriceUSD: 20 },
-        { id: "product8", basePriceUSD: 2000 }
+        { id: "product1", basePriceEUR: 100, discount: 20 }, // 20% off
+        { id: "product2", basePriceEUR: 150, discount: 0 },  // No discount
+        { id: "product3", basePriceEUR: 200, discount: 15 }, // 15% off
+        { id: "product7", basePriceEUR: 20,  discount: 50 }  // 50% off
     ];
 
-    // Exchange rates relative to USD
     const exchangeRates = {
-        "USD": 1,      // 1 USD = 1 USD
-        "EUR": 0.92,   // 1 USD = 0.92 EUR
-        "JPY": 110,    // 1 USD = 110 JPY
-        "GBP": 0.75,   // 1 USD = 0.75 GBP
-        "INR": 75      // 1 USD = 75 INR
-    };
+        "EUR": 1,
+        "USD": 1.18,
+        "JPY": 110,
+        "GBP": 0.75,
+        "INR": 75,
+        "BRR": 6.07,
+    }
 
-    // Function to update product prices based on selected currency
+    const currencySymbols = {
+        "EUR": "€",
+        "USD": "$",
+        "JPY": "¥",
+        "GBP": "£",
+        "INR": "₹",
+        "BRR": "R$"
+    }
+
+    let currentCurrency = "EUR";
+
     function updateProductPrices() {
-        const selectedCurrency = currencyDropdown.value;
-        const exchangeRate = exchangeRates[selectedCurrency];
+        const exchangeRate = exchangeRates[currentCurrency];
+        const symbol = currencySymbols[currentCurrency];
 
         products.forEach(product => {
-            const convertedPrice = (product.basePriceUSD * exchangeRate).toFixed(2);
-            const productPriceDisplay = document.getElementById(`product-price-${product.id}`);
+            const productElement = document.getElementById(`product-price-${product.id}`);
+            if (!productElement) return;
 
-            // Display the price with the correct currency symbol
-            let currencySymbol = '';
-            switch (selectedCurrency) {
-                case "USD": currencySymbol = "$"; break;
-                case "EUR": currencySymbol = "€"; break;
-                case "JPY": currencySymbol = "¥"; break;
-                case "GBP": currencySymbol = "£"; break;
-                case "INR": currencySymbol = "₹"; break;
+            // Calculate converted base price
+            const originalPrice = (product.basePriceEUR * exchangeRate).toFixed(2);
+            
+            if (product.discount > 0) {
+                // Calculate discounted price
+                const discountAmount = originalPrice * (product.discount / 100);
+                const discountedPrice = (originalPrice - discountAmount).toFixed(2);
+
+                // Update HTML with both prices and a discount badge
+                // Note: original-price is styled red and strikethrough via inline style
+                productElement.innerHTML = `
+                    <span class="original-price" style="text-decoration: line-through; color: #e11d48; opacity: 1;">${symbol}${originalPrice}</span>
+                    <span class="discounted-price">${symbol}${discountedPrice}</span>
+                    <div class="discount-badge">-${product.discount}%</div>
+                `;
+            } else {
+                // No discount, just show the regular price
+                productElement.innerHTML = `<span class="discounted-price">${symbol}${originalPrice}</span>`;
             }
-
-            productPriceDisplay.textContent = `${currencySymbol}${convertedPrice}`;
         });
 
-        // Store the selected currency in localStorage
-        localStorage.setItem("selectedCurrency", selectedCurrency);
+        // Update UI active state for buttons
+        buttons.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.currency === currentCurrency);
+        });
+
+        localStorage.setItem("selectedCurrency", currentCurrency);
     }
 
-    // Check if there is a stored currency in localStorage
+    switcher.addEventListener("click", (e) => {
+        if (e.target.classList.contains('currency-btn')) {
+            currentCurrency = e.target.dataset.currency;
+            updateProductPrices();
+        }
+    });
+
     const savedCurrency = localStorage.getItem("selectedCurrency");
-    if (savedCurrency) {
-        currencyDropdown.value = savedCurrency;
+    if (savedCurrency && exchangeRates[savedCurrency]) {
+        currentCurrency = savedCurrency;
     }
 
-    // Update prices when selection changes
-    currencyDropdown.addEventListener("change", updateProductPrices);
-
-    // Set initial price display
     updateProductPrices();
 });
