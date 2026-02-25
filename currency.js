@@ -7,7 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
         { id: "product1", basePriceEUR: 100, discount: 20 }, // 20% off
         { id: "product2", basePriceEUR: 150, discount: 0 },  // No discount
         { id: "product3", basePriceEUR: 200, discount: 15 }, // 15% off
-        { id: "product7", basePriceEUR: 20,  discount: 50 }  // 50% off
+        { id: "product4", basePriceEUR: 20,  discount: 50 },  // 50% off
+        { id: "product5", basePriceEUR: 150, discount: 0 },  // No discount
+        { id: "product6", basePriceEUR: 510, discount: 15 }, // 15% off
+        { id: "product7", basePriceEUR: 230,  discount: 80 },  // 80% off
+        { id: "product8", basePriceEUR: 450,  discount: 5 }  // 5% off
     ];
 
     const exchangeRates = {
