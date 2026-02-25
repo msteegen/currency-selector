@@ -11,19 +11,17 @@
 </head>
 <body>
 
-    <div class="currency-selector">
-        <label for="currency">Choose a currency:</label>
-        <select id="currency" name="currency">
-            <option value="USD">USD - United States Dollar</option>
-            <option value="EUR">EUR - Euro</option>
-            <option value="JPY">JPY - Japanese Yen</option>
-            <option value="GBP">GBP - British Pound</option>
-            <option value="INR">INR - Indian Rupee</option>
-        </select>
+    <div class="currency-grid" id="currency-switcher">
+        <button class="currency-btn active" data-currency="USD">USD ($)</button>
+        <button class="currency-btn" data-currency="EUR">EUR (€)</button>
+        <button class="currency-btn" data-currency="JPY">JPY (¥)</button>
+        <button class="currency-btn" data-currency="GBP">GBP (£)</button>
+        <button class="currency-btn" data-currency="INR">INR (₹)</button>
+        <button class="currency-btn" data-currency="BRR">BRR (R$)</button>
     </div>
 
     <h1>Product Card with Currency Selector</h1>
-    <p>Base Price (USD): $100</p>
+    <p>Base Price (EUR): 100</p>
 
     <div class="container">
         <div class="product-card">
