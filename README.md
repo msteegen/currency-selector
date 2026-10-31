@@ -43,7 +43,3 @@ Include `currency.js` in your HTML file and define price containers for each pro
 - GBP (£)
 - INR (₹)
 - BRL (R$)
-
-## License
-
-This project is open source under the [MIT License](LICENSE).
