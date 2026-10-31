@@ -82,5 +82,3 @@ Assign matching IDs (e.g., `product-price-product1`) inside your product cards:
 | **BRL** | Brazilian Real | R$ |
 
 ## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check out the [issues page](https://github.com/msteegen/currency-selector/issues).
