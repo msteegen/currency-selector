@@ -84,7 +84,3 @@ Assign matching IDs (e.g., `product-price-product1`) inside your product cards:
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check out the [issues page](https://github.com/msteegen/currency-selector/issues).
-
-## 📝 License
-
-This project is [MIT](LICENSE) licensed.
