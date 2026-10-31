@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Switcher JS - Pure Vanilla Landing Page & Demo</title>
+    <link rel="stylesheet" href="css/home.css">
+    <script src="js/currency.js" defer></script>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo-group">
+                <div class="logo-icon">€$</div>
+                <span>CurrencySwitcher.js</span>
+            </a>
+            <nav>
+                <a href="#overview">Overview</a>
+                <a href="#demo">Live Demo</a>
+                <a href="#readme">GitHub README</a>
+            </nav>
+            <a href="https://github.com/msteegen/currency-selector" target="_blank" class="btn-github">
+                <span>GitHub Repository</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="badge-pill">Frankfurter API + 24h Local Cache</span>
+            <h1>
+                Dynamic Multi-Currency Pricing <br>
+                <span class="hero-gradient-text">Zero Dependencies. Pure Vanilla.</span>
+            </h1>
+            <p>
+                A lightweight JavaScript utility that dynamically converts product prices on your e-commerce storefront, applies percentage discounts, and caches exchange rates locally for 24 hours.
+            </p>
+            <div class="hero-actions">
+                <a href="#demo" class="btn-primary">Try Live Demo</a>
+                <a href="#readme" class="btn-secondary">View Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section id="overview" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built for Performance & Reliability</h2>
+                <p>Simple integration with daily automated European Central Bank exchange rates.</p>
+            </div>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>24-Hour Cache</h3>
+                    <p>Stores exchange rate quotes and timestamps in <code>localStorage</code> to eliminate extra API calls and guarantee fast page loads.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Frankfurter API</h3>
+                    <p>Pulls reliable daily exchange rate quotes sourced straight from European Central Bank (ECB) data feeds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏷️</div>
+                    <h3>Automated Discounts</h3>
+                    <p>Recalculates original strike-through prices and discount badges seamlessly across all target currencies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Interactive Store Demo -->
+    <section id="demo" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Storefront Demo</h2>
+                <p>Click any currency button below to test live price updates in action.</p>
+            </div>
+
+            <div class="demo-box">
+                <!-- Currency Buttons -->
+                <div class="currency-grid" id="currency-switcher">
+                    <span class="currency-grid-label">Select Currency:</span>
+                    <button class="currency-btn active" data-currency="USD">USD ($)</button>
+                    <button class="currency-btn" data-currency="EUR">EUR (€)</button>
+                    <button class="currency-btn" data-currency="JPY">JPY (¥)</button>
+                    <button class="currency-btn" data-currency="GBP">GBP (£)</button>
+                    <button class="currency-btn" data-currency="INR">INR (₹)</button>
+                    <button class="currency-btn" data-currency="BRL">BRL (R$)</button>
+                </div>
+
+                <!-- Product Catalog Grid -->
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="product-placeholder">📦</div>
+                        <h3>Awesome Widget I</h3>
+                        <p>Essential daily utility item.</p>
+                        <div id="product-price-product1" class="product-price-box"></div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="product-placeholder">🛠️</div>
+                        <h3>Pro Developer Kit</h3>
+                        <p>Complete workspace bundle.</p>
+                        <div id="product-price-product2" class="product-price-box"></div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="product-placeholder">🚀</div>
+                        <h3>Cloud Suite Pro</h3>
+                        <p>Enterprise scalable engine.</p>
+                        <div id="product-price-product3" class="product-price-box"></div>
+                    </div>
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-placeholder">⚡</div>
+                        <h3>Starter License</h3>
+                        <p>Ideal for rapid prototypes.</p>
+                        <div id="product-price-product4" class="product-price-box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub README Section (msteegen style) -->
+    <section id="readme" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>GitHub Documentation Preview</h2>
+                <p>Formatted matching the clean structure of msteegen/Language-selector repository.</p>
+            </div>
+
+            <div class="readme-wrapper">
+                <div class="readme-header">
+                    <div class="readme-title">
+                        <span>📄</span> README.md
+                    </div>
+                    <span>MIT License</span>
+                </div>
+                <div class="readme-body">
+                    <h1>Currency Selector JS</h1>
+                    <p>
+                        A lightweight, zero-dependency JavaScript utility that dynamically converts product prices on your frontend using exchange rates fetched live from the <a href="https://frankfurter.dev/" target="_blank" style="color:#58a6ff;">Frankfurter API</a>. It caches exchange rates for 24 hours to keep page loads fast and minimize external API calls.
+                    </p>
+
+                    <h2>Features</h2>
+                    <ul>
+                        <li>🔄 <strong>Live Daily Exchange Rates:</strong> Fetches fresh rates from European Central Bank data via the Frankfurter API.</li>
+                        <li>⚡ <strong>24-Hour Automated Cache:</strong> Stores exchange rates in <code>localStorage</code> with a timestamp TTL to avoid unnecessary API requests.</li>
+                        <li>🏷️ <strong>Dynamic Discounts & Formatting:</strong> Automatically calculates original prices, percentage discounts, and badges based on target currency.</li>
+                        <li>🛡️ <strong>Fallback Protection:</strong> Includes pre-defined exchange rates in case of network failures or API downtime.</li>
+                        <li>💾 <strong>Persistent Preference:</strong> Remembers the user's selected currency using browser storage.</li>
+                    </ul>
+
+                    <h2>Quick Setup</h2>
+                    <p>Include <code>currency.js</code> in your HTML file and define price containers for each product:</p>
+                    <pre><code>&lt;div class="currency-grid" id="currency-switcher"&gt;
+                        &lt;button class="currency-btn active" data-currency="USD"&gt;USD ($)&lt;/button&gt;
+                        &lt;button class="currency-btn" data-currency="EUR"&gt;EUR (€)&lt;/button&gt;
+                        &lt;button class="currency-btn" data-currency="GBP"&gt;GBP (£)&lt;/button&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="product-card"&gt;
+                        &lt;h3&gt;Awesome Widget&lt;/h3&gt;
+                        &lt;div id="product-price-product1"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;script src="currency.js"&gt;&lt;/script&gt;</code></pre>
+
+                    <h2>Supported Currencies</h2>
+                    <ul>
+                        <li>EUR (€) - Base Currency</li>
+                        <li>USD ($)</li>
+                        <li>JPY (¥)</li>
+                        <li>GBP (£)</li>
+                        <li>INR (₹)</li>
+                        <li>BRL (R$)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 CurrencySwitcher.js • Pure Vanilla HTML, CSS & JS Implementation</p>
+        </div>
+    </footer>
+
+</html>
